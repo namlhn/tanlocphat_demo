@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:tamlocphat_app/screens/home_screen.dart';
 
+import 'news_screen.dart';
+
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({Key? key}) : super(key: key);
 
@@ -11,7 +13,7 @@ class DashboardScreen extends StatefulWidget {
 class _DashboardScreenState extends State<DashboardScreen> {
   List<Widget> pages = [
     const HomeScreen(),
-    Container(),
+    NewsScreen(),
     Container(),
     Container(),
     Container()
