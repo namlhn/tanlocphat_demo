@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tamlocphat_app/screens/home_screen.dart';
+import 'package:tamlocphat_app/screens/movie_screen.dart';
+import 'package:tamlocphat_app/screens/television_screen.dart';
 
 import 'news_screen.dart';
 
@@ -14,9 +16,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
   List<Widget> pages = [
     const HomeScreen(),
     const NewsScreen(),
-    Container(),
-    Container(),
-    Container()
+    const TelevisionScreen(),
+    const MoviceScreen(),
   ];
   int? currentIndex = 0;
 
@@ -38,8 +39,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
               icon: Icon(Icons.monitor), label: 'Truyền hình'),
           BottomNavigationBarItem(
               icon: Icon(Icons.movie_filter_outlined), label: 'Phim ảnh'),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.account_box), label: 'Tài khoản'),
         ],
         currentIndex: currentIndex!,
         selectedItemColor: Color(0xFF4DC591),
