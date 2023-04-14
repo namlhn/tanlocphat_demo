@@ -13,7 +13,7 @@ class DashboardScreen extends StatefulWidget {
 class _DashboardScreenState extends State<DashboardScreen> {
   List<Widget> pages = [
     const HomeScreen(),
-    NewsScreen(),
+    const NewsScreen(),
     Container(),
     Container(),
     Container()

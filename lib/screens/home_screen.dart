@@ -18,60 +18,67 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-
-
-    return SafeArea(
-        child: Scaffold(
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(150),
-        child: Container(
-          decoration: BoxDecoration(
-              borderRadius: radius(0),
-              color: const Color(0xffe77843).withOpacity(0.5)),
-          child: Column(
-            children: [
-              SettingItemWidget(
-                title: 'Tam Lộc Phát TV',
-                titleTextColor: const Color(0xffda251c),
-                titleTextStyle: boldTextStyle(size: 20),
-                subTitle: 'Ứng dụng giải trí truyền hình',
-                leading: Image.asset(
+    return Scaffold(
+      body: CustomScrollView(
+        slivers: [
+          SliverAppBar(
+            backgroundColor: const Color(0xffe77843).withOpacity(0.5),
+           toolbarHeight: 80,
+            title: Row(
+              children: [
+                Image.asset(
                   'assets/images/logo.png',
                   height: 46,
                 ),
-              ),
-              searchTextField(
-                context: context,
-                onTap: () {},
-              ).paddingSymmetric(horizontal: 16),
-            ],
-          ),
-        ),
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            16.height,
-            dashboardLabelsAndSeeAll(
-              label: "Danh mục yêu thích",
-              onTap: () {},
-            ).paddingSymmetric(horizontal: 16),
-            AlignedGridView.count(
-              crossAxisCount: 2,
-              crossAxisSpacing: 10,
-              mainAxisSpacing: 20,
-              itemBuilder: (context, index) => itemGird(listCats[index]),
-              itemCount: listCats.length,
-              shrinkWrap: true,
-              padding: const EdgeInsets.symmetric(horizontal: 15),
-              physics: const NeverScrollableScrollPhysics(),
+                10.width,
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text('Tam Lộc Phát TV', style: boldTextStyle(),),
+                    3.height,
+                    Text('Ứng dụng giải trí truyền hình', style:  secondaryTextStyle(
+                      color: textSecondaryColorGlobal,
+                    ),)
+                  ],
+                )
+              ],
             ),
-          ],
-        ),
+          ),
+          SliverToBoxAdapter(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  color:  const Color(0xffe77843).withOpacity(0.5),
+                  padding: EdgeInsets.only(top: 0, bottom: 20),
+                  child:  searchTextField(
+                    context: context,
+                    onTap: () {},
+                  ).paddingSymmetric(horizontal: 16),
+                ),
+                16.height,
+                dashboardLabelsAndSeeAll(
+                  label: "Danh mục yêu thích",
+                  onTap: () {},
+                ).paddingSymmetric(horizontal: 16),
+                AlignedGridView.count(
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 10,
+                  mainAxisSpacing: 20,
+                  itemBuilder: (context, index) => itemGird(listCats[index]),
+                  itemCount: listCats.length,
+                  shrinkWrap: true,
+                  padding: const EdgeInsets.symmetric(horizontal: 15),
+                  physics: const NeverScrollableScrollPhysics(),
+                ),
+              ],
+            ),
+          )
+        ],
       ),
-    ));
+    );
   }
 
   Widget itemGird(ESModel info) {
